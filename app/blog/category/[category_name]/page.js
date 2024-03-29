@@ -1,12 +1,12 @@
 import BlogCard from '@/components/BlogCard';
 import Tag from '@/components/Tag';
 
-const BlogPage = () => {
+const CategoryPage = ({ params }) => {
   return (
     <div className="container mx-auto flex justify-between ">
       <section className="flex flex-col w-3/4 ">
         <h2 className="mb-8 text-3xl font-bold text-primary  sm:text-4xl md:text-[40px]">
-          All Posts
+          Posts in {params.category_name}
         </h2>
 
         <div className="-mx-4 flex flex-wrap">
@@ -103,4 +103,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default CategoryPage;

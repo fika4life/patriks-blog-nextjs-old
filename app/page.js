@@ -8,29 +8,32 @@ const Blog = () => {
     <>
       <Hero></Hero>
       <section className=" *:pb-10 pt-20  lg:pt-[120px]">
-        <div className="container mx-auto ">
+        <div className="container mx-auto">
           <section className="flex flex-col">
-            <h2 className="mb-8 text-3xl font-bold text-primary dark:text-white sm:text-4xl md:text-[40px]">
+            <h2 className="mb-8 text-3xl font-bold text-primary sm:text-4xl md:text-[40px]">
               Latest Posts
             </h2>
-            <div className="-mx-4 flex flex-wrap">
+            <div className=" flex flex-wrap">
               <BlogCard
                 date="Dec 22, 2023"
                 CardTitle="Meet AutoManage, the best AI management tools"
                 CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
                 image="https://i.ibb.co/Cnwd4q6/image-01.jpg"
+                id="1"
               />
               <BlogCard
                 date="Dec 22, 2023"
                 CardTitle="Meet AutoManage, the best AI management tools"
                 CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
                 image="https://i.ibb.co/Y23YC07/image-02.jpg"
+                id="2"
               />
               <BlogCard
                 date="Dec 22, 2023"
                 CardTitle="Meet AutoManage, the best AI management tools"
                 CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
                 image="https://i.ibb.co/7jdcnwn/image-03.jpg"
+                id="3"
               />
             </div>
           </section>
