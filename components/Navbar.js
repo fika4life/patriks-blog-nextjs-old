@@ -51,7 +51,7 @@ const Navbar = () => {
                     <>
                       <ListItem NavLink="/write">
                         <FaRegPlusSquare className="mt-1 mr-1" />
-                        New Post
+                        Write
                       </ListItem>
 
                       <span

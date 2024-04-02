@@ -4,18 +4,19 @@ import { useRouter } from 'next/navigation';
 import Loading from '../loading';
 
 export default function LoginPage() {
-  const { status, data } = useSession();
+  const { status } = useSession();
   console.log('status:', status);
 
   const router = useRouter();
 
   if (status === 'loading') {
-    return Loading;
+    return <Loading></Loading>;
   }
 
-  if (status === 'authenticated') {
-    router.push('/');
-  }
+  // if (status === 'authenticated') {
+  //   router.push('/');
+  // }
+
   return (
     <div className="grid h-screen place-items-center">
       <button

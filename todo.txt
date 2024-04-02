@@ -1,4 +1,4 @@
-adjust navbar menu based on authenticated or not
-https://www.youtube.com/watch?v=DpYE5zPDRVQ&list=PLoeGbZamQvihLW0ExmXVdeJ-GGY5IbNRV&index=23
+-fix push from login after succesful login
 
-redirect after authentication
+-create the writing page.
+https://youtu.be/DpYE5zPDRVQ?feature=shared&t=7988
