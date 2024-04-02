@@ -1,9 +1,21 @@
 'use client';
 import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import Loading from '../loading';
 
 export default function LoginPage() {
   const { status, data } = useSession();
-  console.log(data);
+  console.log('status:', status);
+
+  const router = useRouter();
+
+  if (status === 'loading') {
+    return Loading;
+  }
+
+  if (status === 'authenticated') {
+    router.push('/');
+  }
   return (
     <div className="grid h-screen place-items-center">
       <button
