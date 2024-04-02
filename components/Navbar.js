@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <header className={`flex w-full items-center bg-white `}>
       <div className="container mx-auto">
-        <div className="relative -mx-4 flex items-center justify-between">
+        <div className="relative md:-mx-4 flex items-center justify-between">
           <div className="w-60 max-w-full px-4">
             <Link href="/" className="block w-full py-5 text-primary">
               <Image src={logo} alt="logo" width={240} height={60} />

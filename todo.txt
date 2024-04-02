@@ -1,0 +1,4 @@
+adjust navbar menu based on authenticated or not
+https://www.youtube.com/watch?v=DpYE5zPDRVQ&list=PLoeGbZamQvihLW0ExmXVdeJ-GGY5IbNRV&index=23
+
+redirect after authentication
