@@ -1,5 +1,6 @@
 import BlogCard from '@/components/BlogCard';
 import Tag from '@/components/Tag';
+import posts from '@/posts.json';
 
 const BlogPage = () => {
   return (
@@ -8,81 +9,17 @@ const BlogPage = () => {
         <h2 className="mb-8 text-3xl font-bold text-primary  sm:text-4xl md:text-[40px]">
           All Posts
         </h2>
-
         <div className="-mx-4 flex flex-wrap">
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/Cnwd4q6/image-01.jpg"
-          />
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/Y23YC07/image-02.jpg"
-          />
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/7jdcnwn/image-03.jpg"
-          />
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/Cnwd4q6/image-01.jpg"
-          />
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/Y23YC07/image-02.jpg"
-          />
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/7jdcnwn/image-03.jpg"
-          />
-
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/Cnwd4q6/image-01.jpg"
-          />
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/Y23YC07/image-02.jpg"
-          />
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/7jdcnwn/image-03.jpg"
-          />
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/Cnwd4q6/image-01.jpg"
-          />
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/Y23YC07/image-02.jpg"
-          />
-          <BlogCard
-            date="Dec 22, 2023"
-            CardTitle="Meet AutoManage, the best AI management tools"
-            CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            image="https://i.ibb.co/7jdcnwn/image-03.jpg"
-          />
+          {posts.map((post) => (
+            <BlogCard
+              key={post.id}
+              CardTitle={post.title}
+              CardDescription={post.body.slice(0, 60)}
+              date={post.createdAt}
+              image={post.imgUrl}
+              category={post.category}
+            ></BlogCard>
+          ))}
         </div>
       </section>
 

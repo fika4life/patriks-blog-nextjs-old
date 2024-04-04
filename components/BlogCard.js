@@ -1,7 +1,25 @@
 import Link from 'next/link';
 import Tag from './Tag';
 
-const BlogCard = ({ image, date, CardTitle, CardDescription, id }) => {
+const BlogCard = ({
+  image,
+  date,
+  CardTitle,
+  CardDescription,
+  id,
+  category
+}) => {
+  const locale = 'en-US';
+
+  const options = {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  };
+
+  let formattedDate = new Date(date);
+  formattedDate = formattedDate.toLocaleDateString(locale, options);
+
   return (
     <>
       <Link href={`/blog/${id}`} className="w-full px-4 md:w-1/2 lg:w-1/3">
@@ -10,9 +28,9 @@ const BlogCard = ({ image, date, CardTitle, CardDescription, id }) => {
             <img src={image} alt="" className="w-full" />
           </div>
           <div>
-            {date && (
+            {formattedDate && (
               <p className="mb-1 text-sm text-primary">
-                <time> {date}</time> | Finance
+                <time> {formattedDate}</time> | {category}
               </p>
             )}
             <h3 className="mb-4 inline-block text-xl font-semibold text-primary hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">

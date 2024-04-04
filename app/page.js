@@ -1,9 +1,11 @@
+import posts from '@/posts.json';
 import BlogCard from '@/components/BlogCard';
 import Hero from '@/components/Hero';
 import Link from 'next/link';
 import { FaAngleRight } from 'react-icons/fa';
 
 const Blog = () => {
+  let latestPosts = posts.slice(0, 3);
   return (
     <>
       <Hero></Hero>
@@ -14,27 +16,16 @@ const Blog = () => {
               Latest Posts
             </h2>
             <div className=" flex flex-wrap">
-              <BlogCard
-                date="Dec 22, 2023"
-                CardTitle="Meet AutoManage, the best AI management tools"
-                CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                image="https://i.ibb.co/Cnwd4q6/image-01.jpg"
-                id="1"
-              />
-              <BlogCard
-                date="Dec 22, 2023"
-                CardTitle="Meet AutoManage, the best AI management tools"
-                CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                image="https://i.ibb.co/Y23YC07/image-02.jpg"
-                id="2"
-              />
-              <BlogCard
-                date="Dec 22, 2023"
-                CardTitle="Meet AutoManage, the best AI management tools"
-                CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                image="https://i.ibb.co/7jdcnwn/image-03.jpg"
-                id="3"
-              />
+              {latestPosts.map((post) => (
+                <BlogCard
+                  key={post.id}
+                  CardTitle={post.title}
+                  CardDescription={post.body.slice(0, 60)}
+                  date={post.createdAt}
+                  image={post.imgUrl}
+                  category={post.category}
+                ></BlogCard>
+              ))}
             </div>
           </section>
           <Link href="/blog">

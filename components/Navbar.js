@@ -49,9 +49,9 @@ const Navbar = () => {
                   <ListItem NavLink="/blog">Blog</ListItem>
                   {session ? (
                     <>
-                      <ListItem NavLink="/write">
+                      <ListItem NavLink="/blog/create">
                         <FaRegPlusSquare className="mt-1 mr-1" />
-                        Write
+                        Create Post
                       </ListItem>
 
                       <span
