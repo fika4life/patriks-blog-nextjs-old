@@ -14,7 +14,7 @@ const Navbar = () => {
   const { data: session } = useSession();
 
   return (
-    <header className={`flex w-full items-center bg-white `}>
+    <header className={`flex w-full items-center bg-white  `}>
       <div className="container mx-auto">
         <div className="relative md:-mx-4 flex items-center justify-between">
           <div className="w-60 max-w-full px-4">
@@ -29,7 +29,7 @@ const Navbar = () => {
                 id="navbarToggler"
                 className={` ${
                   open && 'navbarTogglerActive'
-                } absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden`}
+                } absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 z-50 opacity-100 lg:hidden`}
               >
                 <span className="relative my-[6px] block h-[2px] w-[30px] bg-primary"></span>
                 <span className="relative my-[6px] block h-[2px] w-[30px] bg-primary"></span>
@@ -38,7 +38,7 @@ const Navbar = () => {
               <nav
                 // :className="!navbarOpen && 'hidden' "
                 id="navbarCollapse"
-                className={`absolute right-4 top-full w-full max-w-[250px] rounded-sm bg-white px-6 py-5 shadow dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent ${
+                className={`absolute z-50  right-4 top-full w-full max-w-[250px] rounded-sm bg-white px-6 py-5 shadow dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent ${
                   !open && 'hidden'
                 } `}
               >
@@ -49,10 +49,7 @@ const Navbar = () => {
                   <ListItem NavLink="/blog">Blog</ListItem>
                   {session ? (
                     <>
-                      <ListItem NavLink="/blog/create">
-                        <FaRegPlusSquare className="mt-1 mr-1" />
-                        Create Post
-                      </ListItem>
+                      <ListItem NavLink="/blog/create">Create Post</ListItem>
 
                       <span
                         className="flex py-2 text-base font-medium text-primary hover:underline hover:underline-offset-8 hover:decoration-primary hover:decoration-2 lg:ml-12 lg:inline-flex hover:cursor-pointer"

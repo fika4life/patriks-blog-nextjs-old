@@ -1,4 +1,11 @@
--fix push from login after succesful login
+
 
 -create the writing page.
 https://youtu.be/DpYE5zPDRVQ?feature=shared&t=7988
+
+
+- make a details page pull the data from the json file. 
+
+- add page to see own posts, edit posts, delete posts
+
+- change .env for deployment

@@ -3,6 +3,7 @@ import BlogCard from '@/components/BlogCard';
 import Hero from '@/components/Hero';
 import Link from 'next/link';
 import { FaAngleRight } from 'react-icons/fa';
+import Footer from '@/components/Footer';
 
 const Blog = () => {
   let latestPosts = posts.slice(0, 3);
@@ -38,6 +39,7 @@ const Blog = () => {
           </Link>
         </div>
       </section>
+      <Footer></Footer>
     </>
   );
 };
