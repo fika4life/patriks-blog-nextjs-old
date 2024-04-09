@@ -6,7 +6,7 @@ Image;
 export default function BlogDetails() {
   return (
     <article className="container mx-auto px-16">
-      <Tag name={'Finance'}></Tag>
+      <Tag slug="Finance"></Tag>
       <h2 className="mb-2 mt-8 text-3xl font-bold text-primary sm:text-4xl md:text-[40px]">
         This Is the Blog Title.
       </h2>

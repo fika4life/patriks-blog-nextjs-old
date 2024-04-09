@@ -28,7 +28,7 @@ const BlogPage = async () => {
               CardDescription={post.desc.slice(0, 74)}
               date={post.createdAt}
               image={post.imgUrl}
-              category={post.category}
+              category={post.catSlug}
             ></BlogCard>
           ))}
         </div>

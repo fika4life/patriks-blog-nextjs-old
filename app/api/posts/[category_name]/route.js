@@ -1,13 +1,17 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/utils/connect';
 
-export const GET = async () => {
+export const GET = async (req, { params }) => {
+  const category = params.category_name;
+
   try {
-    const categories = await prisma.category.findMany();
+    const posts = await prisma.post.findMany({
+      where: { catSlug: category }
+    });
 
     return new NextResponse(
       JSON.stringify({
-        categories,
+        posts,
         status: 200
       })
     );

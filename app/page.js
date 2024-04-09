@@ -1,11 +1,21 @@
-import posts from '@/posts.json';
 import BlogCard from '@/components/BlogCard';
 import Hero from '@/components/Hero';
 import Link from 'next/link';
 import { FaAngleRight } from 'react-icons/fa';
-import Footer from '@/components/Footer';
 
-const Blog = () => {
+const getData = async () => {
+  const res = await fetch(`${process.env.URL}/api/posts/`, {
+    cache: 'no-store'
+  });
+
+  if (!res.ok) {
+    throw new Error('Posts fetch failed');
+  }
+  return res.json();
+};
+
+const Blog = async () => {
+  const { posts } = await getData();
   let latestPosts = posts.slice(0, 3);
   return (
     <>
@@ -21,10 +31,10 @@ const Blog = () => {
                 <BlogCard
                   key={post.id}
                   CardTitle={post.title}
-                  CardDescription={post.body.slice(0, 60)}
+                  CardDescription={post.desc.slice(0, 60)}
                   date={post.createdAt}
-                  image={post.imgUrl}
-                  category={post.category}
+                  image={post.img}
+                  category={post.catSlug}
                 ></BlogCard>
               ))}
             </div>
@@ -39,7 +49,6 @@ const Blog = () => {
           </Link>
         </div>
       </section>
-      <Footer></Footer>
     </>
   );
 };

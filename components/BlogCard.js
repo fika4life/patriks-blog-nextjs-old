@@ -30,7 +30,8 @@ const BlogCard = ({
           <div>
             {formattedDate && (
               <p className="mb-1 text-sm text-primary">
-                <time> {formattedDate}</time> | {category}
+                <time> {formattedDate}</time> |
+                <span className="capitalize"> {category}</span>
               </p>
             )}
             <h3 className="mb-4 inline-block text-xl font-semibold text-primary hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">

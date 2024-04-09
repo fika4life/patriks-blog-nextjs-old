@@ -1,14 +1,12 @@
 import Link from 'next/link';
 
-Link;
-
-const Tag = ({ name }) => {
+const Tag = ({ slug }) => {
   return (
     <Link
-      href={`/blog/category/${name}`}
-      className="inline-flex  border-primary  border-2 items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold text-primary"
+      href={`/blog/category/${slug}`}
+      className="inline-flex  border-primary  border-2 items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold text-primary capitalize"
     >
-      {name}
+      {slug}
     </Link>
   );
 };
