@@ -1,6 +1,5 @@
 'use client';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+
 import { useState } from 'react';
 
 export default function CreatePostPage() {
@@ -98,7 +97,7 @@ export default function CreatePostPage() {
         </div>
 
         {/* textarea */}
-        <div className="mx-auto max-w-2xl  my-8 ">
+        {/* <div className="mx-auto max-w-2xl  my-8 ">
           <label
             htmlFor="blogBody"
             className="mb-1 block text-sm font-medium text-primary"
@@ -114,7 +113,7 @@ export default function CreatePostPage() {
             placeholder="
             Start blogging..."
           ></textarea>
-        </div>
+        </div> */}
       </form>
     </div>
   );
