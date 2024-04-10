@@ -29,6 +29,7 @@ const BlogPage = async () => {
               date={post.createdAt}
               image={post.imgUrl}
               category={post.catSlug}
+              slug={post.slug}
             ></BlogCard>
           ))}
         </div>

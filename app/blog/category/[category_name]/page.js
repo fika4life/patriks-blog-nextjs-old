@@ -2,7 +2,9 @@ import BlogCard from '@/components/BlogCard';
 import CategoryPills from '@/components/CategoryPills';
 
 const getData = async (category_name) => {
-  const res = await fetch(`${process.env.URL}/api/posts/${category_name}/`);
+  const res = await fetch(
+    `${process.env.URL}/api/posts/category/${category_name}/`
+  );
 
   if (!res.ok) {
     throw new Error('Something went wrong with getting posts by category');
@@ -32,6 +34,7 @@ const CategoryPage = async ({ params }) => {
                 CardTitle={post.title}
                 CardDescription={post.desc.substring(0, 75)}
                 category={post.catSlug}
+                slug={post.slug}
                 image="https://i.ibb.co/Cnwd4q6/image-01.jpg"
               />
             );

@@ -6,7 +6,7 @@ const BlogCard = ({
   date,
   CardTitle,
   CardDescription,
-  id,
+  slug,
   category
 }) => {
   const locale = 'en-US';
@@ -22,7 +22,7 @@ const BlogCard = ({
 
   return (
     <>
-      <Link href={`/blog/${id}`} className="w-full px-4 md:w-1/2 lg:w-1/3">
+      <Link href={`/blog/${slug}`} className="w-full px-4 md:w-1/2 lg:w-1/3">
         <div className="mb-10 w-full">
           <div className="mb-8 overflow-hidden rounded">
             <img src={image} alt="" className="w-full" />
