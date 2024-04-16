@@ -4,7 +4,7 @@
 
 input,
 select,
-textarea {
+.tiptap.ProseMirror {
   padding-left: 8px;
   font-size: 18px;
 }
@@ -16,4 +16,20 @@ select {
 
 textarea {
   height: 300px;
+}
+
+.tiptap.ProseMirror {
+  outline: none;
+  padding: 0.2em 1.2em;
+  background-color: white;
+  height: 300px;
+  border-radius: 6px;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.is-active {
+  background-color: #dadada;
+  border-radius: 2px;
 }

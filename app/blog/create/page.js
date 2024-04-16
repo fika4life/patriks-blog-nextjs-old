@@ -1,4 +1,5 @@
 'use client';
+import TipTapEditor from '@/components/TipTapEditor';
 
 import { useState } from 'react';
 
@@ -8,8 +9,13 @@ export default function CreatePostPage() {
   const [file, setFile] = useState('');
   const [blogBody, setBlogBody] = useState('');
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    const newPost = { title, category, file: null, desc: blogBody };
+
+    try {
+      const data = fetch(`${process.env.URL}/api/posts/`);
+    } catch (error) {}
   };
 
   return (
@@ -97,23 +103,9 @@ export default function CreatePostPage() {
         </div>
 
         {/* textarea */}
-        {/* <div className="mx-auto max-w-2xl  my-8 ">
-          <label
-            htmlFor="blogBody"
-            className="mb-1 block text-sm font-medium text-primary"
-          >
-            Message
-          </label>
-          <textarea
-            value={blogBody}
-            onChange={(e) => setBlogBody(e.target.value)}
-            id="blogBody"
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 pt-2"
-            rows="20"
-            placeholder="
-            Start blogging..."
-          ></textarea>
-        </div> */}
+        <div className="mt-12">
+          <TipTapEditor />
+        </div>
       </form>
     </div>
   );
