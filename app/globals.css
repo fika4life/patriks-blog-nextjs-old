@@ -14,10 +14,6 @@ select {
   height: 42px;
 }
 
-textarea {
-  height: 300px;
-}
-
 .tiptap.ProseMirror {
   outline: none;
   padding: 0.2em 1.2em;
