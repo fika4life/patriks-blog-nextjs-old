@@ -20,9 +20,9 @@ export default function CreatePostPage() {
 
   return (
     <div className="container mx-auto flex flex-col justify-center items-center">
-      <form className="w-1/2" onSubmit={handleSubmit}>
+      <form className="w-3/4" onSubmit={handleSubmit}>
         {/* title */}
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-4xl">
           <div>
             <label
               htmlFor="title"
@@ -42,7 +42,7 @@ export default function CreatePostPage() {
         </div>
 
         {/* Category */}
-        <div className="mx-auto max-w-2xl  my-8 ">
+        <div className="mx-auto max-w-4xl  my-8 ">
           <label
             htmlFor="category"
             className="mb-1 block text-sm font-medium text-primary"
@@ -60,7 +60,7 @@ export default function CreatePostPage() {
         </div>
 
         {/* upload box */}
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-4xl">
           <label
             htmlFor="coverImg"
             className="mb-1 block text-sm font-medium text-primary"
@@ -103,7 +103,7 @@ export default function CreatePostPage() {
         </div>
 
         {/* textarea */}
-        <div className="mt-12">
+        <div className="mt-12 mx-auto max-w-4xl">
           <TipTapEditor />
         </div>
       </form>
