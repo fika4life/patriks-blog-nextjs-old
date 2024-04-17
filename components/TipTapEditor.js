@@ -22,7 +22,7 @@ const TipTapEditor = () => {
       <div className="flex">
         {editor && <TipTapMenuBar editor={editor}></TipTapMenuBar>}
       </div>
-      <div className="prose block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-300 my-2">
+      <div className="prose w-full rounded-md border-gray-300 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-300 my-2 -mx-3/4">
         <EditorContent editor={editor} />
       </div>
     </>
