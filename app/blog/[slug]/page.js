@@ -44,7 +44,10 @@ const BlogDetails = async ({ params }) => {
         style={{ width: '100%' }}
       ></Image>
 
-      <div className="mt-8 mb-16">{post.desc}</div>
+      <div
+        className="mt-8 mb-16"
+        dangerouslySetInnerHTML={{ __html: post?.desc }}
+      />
     </article>
   );
 };

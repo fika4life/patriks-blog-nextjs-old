@@ -1,22 +1,8 @@
 'use client';
-
-import { EditorContent, useEditor } from '@tiptap/react';
-import { StarterKit } from '@tiptap/starter-kit';
-import { useState } from 'react';
+import { EditorContent } from '@tiptap/react';
 import TipTapMenuBar from '@/components/TipTapMenuBar';
 
-const TipTapEditor = () => {
-  const [editorState, setEditorState] = useState(null);
-
-  const editor = useEditor({
-    autofocus: true,
-    extensions: [StarterKit],
-    content: editorState,
-    onUpdate: ({ editor }) => {
-      setEditorState(editor.getHTML());
-    }
-  });
-
+const TipTapEditor = ({ editor }) => {
   return (
     <>
       <div className="flex">

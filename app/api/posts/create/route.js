@@ -3,21 +3,22 @@ import { NextResponse } from 'next/server';
 
 export const POST = async (request) => {
   try {
-    // const post = await request.json();
+    const body = await request.json();
 
-    // console.log(post);
+    console.log(body);
+    const { title, slug, category, desc, img } = body;
 
     const data = await prisma.post.create({
       data: {
-        title: 'Hey there',
-        slug: 'hey-there',
+        title,
+        slug,
         category: {
           connect: {
-            slug: 'saving'
+            slug: category
           }
         },
-        desc: 'This is a test post',
-        img: null,
+        desc: desc,
+        img: img,
         user: {
           connect: {
             email: 'fistewie@gmail.com'
@@ -28,7 +29,6 @@ export const POST = async (request) => {
 
     return new NextResponse(JSON.stringify({ data }, { status: 200 }));
   } catch (error) {
-    throw new Error(error.message);
     return new NextResponse(
       JSON.stringify(
         { message: 'There was an error creating your post' },

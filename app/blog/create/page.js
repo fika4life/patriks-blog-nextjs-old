@@ -1,21 +1,70 @@
 'use client';
 import TipTapEditor from '@/components/TipTapEditor';
-
+import { useEditor } from '@tiptap/react';
+import { StarterKit } from '@tiptap/starter-kit';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function CreatePostPage() {
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('finance');
   const [file, setFile] = useState('');
-  const [blogBody, setBlogBody] = useState('');
+  const [editorState, setEditorState] = useState(null);
 
-  const handleSubmit = (e) => {
+  const router = useRouter();
+
+  const editor = useEditor({
+    autofocus: true,
+    extensions: [StarterKit],
+    content: editorState,
+    onUpdate: ({ editor }) => {
+      setEditorState(editor.getHTML());
+    }
+  });
+
+  const slugify = (str) =>
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newPost = { title, category, file: null, desc: blogBody };
+
+    const newPost = {
+      title,
+      slug: slugify(title),
+      category,
+      img: file,
+      desc: editorState
+    };
+
+    console.log(newPost);
 
     try {
-      const data = fetch(`${process.env.URL}/api/posts/`);
-    } catch (error) {}
+      const data = await fetch(`/api/posts/create`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newPost)
+      });
+
+      const res = await data.json();
+
+      if (res.error) {
+        console.log(error.message);
+      }
+      if (res.data) {
+        router.refresh();
+        router.push('/blog');
+      }
+    } catch (error) {
+      throw new Error(error.message);
+    }
   };
 
   return (
@@ -51,6 +100,8 @@ export default function CreatePostPage() {
           </label>
           <select
             id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-300  "
           >
             <option value="finance">Finance</option>
@@ -104,8 +155,9 @@ export default function CreatePostPage() {
 
         {/* textarea */}
         <div className="mt-12 mx-auto max-w-4xl">
-          <TipTapEditor />
+          <TipTapEditor editor={editor} />
         </div>
+        <button type="submit">Publish</button>
       </form>
     </div>
   );

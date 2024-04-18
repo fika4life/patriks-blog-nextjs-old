@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Tag from './Tag';
 
 const BlogCard = ({
   image,
@@ -20,6 +19,8 @@ const BlogCard = ({
   let formattedDate = new Date(date);
   formattedDate = formattedDate.toLocaleDateString(locale, options);
 
+  const content = CardDescription;
+
   return (
     <>
       <Link href={`/blog/${slug}`} className="w-full px-4 md:w-1/2 lg:w-1/3">
@@ -37,7 +38,10 @@ const BlogCard = ({
             <h3 className="mb-4 inline-block text-xl font-semibold text-primary hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">
               {CardTitle}
             </h3>
-            <p className="text-base text-primary">{CardDescription}</p>
+            <p
+              className="text-base text-primary"
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
           </div>
         </div>
       </Link>
