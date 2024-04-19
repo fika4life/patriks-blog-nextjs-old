@@ -47,6 +47,7 @@ const Navbar = () => {
 
                   <ListItem NavLink="/about">About</ListItem>
                   <ListItem NavLink="/blog">Blog</ListItem>
+                  <ListItem NavLink="/dashboard">Dashboard</ListItem>
                   {session ? (
                     <>
                       <ListItem NavLink="/blog/create">Create Post</ListItem>
