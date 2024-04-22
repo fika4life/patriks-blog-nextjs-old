@@ -78,4 +78,10 @@ model Post {
   category  Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email])
+  status PostStatus @default(PUBLISHED)
+}
+
+enum PostStatus {
+  PUBLISHED
+  DRAFT
 }

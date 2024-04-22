@@ -1,9 +1,24 @@
 'use client';
 
-import { ColumnDef } from '@tanstack/react-table';
+import { MoreHorizontal } from 'lucide-react';
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
+
+const locale = 'en-US';
+
+const options = {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric'
+};
 
 export const columns = [
   {
@@ -12,7 +27,12 @@ export const columns = [
   },
   {
     accessorKey: 'createdAt',
-    header: 'Last Updated'
+    header: 'Last Updated',
+    cell: ({ row }) => {
+      const date = new Date(row.getValue('createdAt'));
+      const formatted = date.toLocaleDateString(locale, options);
+      return <div className="">{formatted}</div>;
+    }
   },
   {
     accessorKey: 'views',
@@ -24,10 +44,35 @@ export const columns = [
   },
   {
     accessorKey: 'status',
-    header: 'Status'
+    header: 'Status',
+    cell: ({ row }) => {
+      return (
+        <div className="font-medium capitalize">{row.getValue('status')}</div>
+      );
+    }
   },
   {
-    accessorKey: 'actions',
-    header: 'Actions'
+    id: 'actions',
+    cell: ({ row }) => {
+      const post = row.original;
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    }
   }
 ];
