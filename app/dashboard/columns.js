@@ -1,6 +1,6 @@
 'use client';
 
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, ArrowUpDown } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -12,13 +12,28 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 
-const locale = 'en-US';
+import { useRouter } from 'next/navigation';
 
+// for toLocaleDateString
+const locale = 'en-US';
 const options = {
   month: 'long',
   day: 'numeric',
   year: 'numeric'
 };
+
+// event handlers
+const onEdit = (slug) => {
+  alert(`on edit fired for slug with id ${slug}`);
+};
+
+async function onDelete(slug) {
+  const res = await fetch(`/api/posts/${slug}`, {
+    method: 'DELETE'
+  });
+
+  const data = res.json();
+}
 
 export const columns = [
   {
@@ -27,7 +42,17 @@ export const columns = [
   },
   {
     accessorKey: 'createdAt',
-    header: 'Last Updated',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Last Updated
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => {
       const date = new Date(row.getValue('createdAt'));
       const formatted = date.toLocaleDateString(locale, options);
@@ -36,19 +61,47 @@ export const columns = [
   },
   {
     accessorKey: 'views',
-    header: 'Views'
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Views
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    }
   },
   {
     accessorKey: 'catSlug',
-    header: 'Category'
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Category
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    }
   },
   {
     accessorKey: 'status',
-    header: 'Status',
-    cell: ({ row }) => {
+    header: ({ column }) => {
       return (
-        <div className="font-medium capitalize">{row.getValue('status')}</div>
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Status
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
       );
+    },
+    cell: ({ row }) => {
+      return <div className="normal-case">{row.getValue('status')}</div>;
     }
   },
   {
@@ -68,8 +121,16 @@ export const columns = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuItem>Delete</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onEdit(post.slug)}>
+              Edit
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                onDelete(post.slug), router.refresh();
+              }}
+            >
+              Delete
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
