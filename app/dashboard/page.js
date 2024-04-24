@@ -3,7 +3,9 @@ import { DataTable } from '@/components/data-table';
 
 async function getData() {
   // Fetch data from your API here.
-  const res = await fetch(`${process.env.URL}/api/posts`);
+  const res = await fetch(`${process.env.URL}/api/posts`, {
+    next: { revalidate: 0 }
+  });
   const data = res.json();
 
   return data;

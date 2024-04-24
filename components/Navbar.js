@@ -47,11 +47,9 @@ const Navbar = () => {
 
                   <ListItem NavLink="/about">About</ListItem>
                   <ListItem NavLink="/blog">Blog</ListItem>
-                  <ListItem NavLink="/dashboard">Dashboard</ListItem>
                   {session ? (
                     <>
-                      <ListItem NavLink="/blog/create">Create Post</ListItem>
-
+                      <ListItem NavLink="/dashboard">Dashboard</ListItem>
                       <span
                         className="flex py-2 text-base font-medium text-primary hover:underline hover:underline-offset-8 hover:decoration-primary hover:decoration-2 lg:ml-12 lg:inline-flex hover:cursor-pointer"
                         onClick={signOut}

@@ -28,6 +28,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export function DataTable({ columns, data }) {
   const [columnFilters, setColumnFilters] = useState([]);
@@ -48,19 +49,27 @@ export function DataTable({ columns, data }) {
     }
   });
 
+  const router = useRouter();
+
   return (
     <>
       {/* input */}
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter titles..."
-          value={table.getColumn('title')?.getFilterValue() ?? ''}
-          onChange={(event) =>
-            table.getColumn('title')?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
+      <div className="flex flex-row justify-between">
+        <div className="flex items-center py-4">
+          <Input
+            placeholder="Filter titles..."
+            value={table.getColumn('title')?.getFilterValue() ?? ''}
+            onChange={(event) =>
+              table.getColumn('title')?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm"
+          />
+        </div>
+        <Button onClick={() => router.push('/blog/create')}>
+          Create new post
+        </Button>
       </div>
+
       {/* table */}
       <div className="rounded-md border">
         <Table>
