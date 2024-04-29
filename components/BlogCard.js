@@ -38,7 +38,7 @@ const BlogCard = ({
             <h3 className="mb-4 inline-block text-xl font-semibold text-primary hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">
               {CardTitle}
             </h3>
-            <p
+            <div
               className="text-base text-primary"
               dangerouslySetInnerHTML={{ __html: content }}
             />
