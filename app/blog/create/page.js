@@ -11,6 +11,9 @@ export default function CreatePostPage() {
   const [file, setFile] = useState('');
   const [editorState, setEditorState] = useState(null);
 
+  // TODO: Add validation for inputs
+  // TODO: Enable upload images
+
   const router = useRouter();
 
   const editor = useEditor({

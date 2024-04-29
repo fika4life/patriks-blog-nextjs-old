@@ -1,6 +1,9 @@
 import { columns } from './columns';
 import { DataTable } from '@/components/data-table';
 
+// TODO: Add ability to edit posts
+// TODO: Add modal to confirm delete
+
 async function getData() {
   // Fetch data from your API here.
   const res = await fetch(`${process.env.URL}/api/posts`, {
