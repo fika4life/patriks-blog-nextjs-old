@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 
 import CellAction from './cell-action';
 
+// TODO: add link to article
+
 // for toLocaleDateString
 const locale = 'en-US';
 const options = {

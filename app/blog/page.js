@@ -10,6 +10,7 @@ const getData = async () => {
     throw new Error('Posts fetch failed');
   }
   return res.json();
+  console.log(posts);
 };
 
 const BlogPage = async () => {
@@ -27,7 +28,7 @@ const BlogPage = async () => {
               CardTitle={post.title}
               CardDescription={post.desc.slice(0, 74)}
               date={post.createdAt}
-              image={post.imgUrl}
+              image={post.img}
               category={post.catSlug}
               slug={post.slug}
             ></BlogCard>

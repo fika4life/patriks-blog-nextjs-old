@@ -42,6 +42,7 @@ const BlogDetails = async ({ params }) => {
         width={1000}
         height={400}
         style={{ width: '100%' }}
+        alt={post.title}
       ></Image>
 
       <div

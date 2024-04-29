@@ -20,6 +20,7 @@ export default function CellAction({ data }) {
   const params = useParams();
 
   const onDelete = async (slug) => {
+    console.log('here');
     try {
       const url = `/api/posts/${slug}`;
       console.log(url);

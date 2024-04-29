@@ -25,6 +25,8 @@ export const DELETE = async (req, { params }) => {
   try {
     const { slug } = params;
 
+    console.log('delete route');
+
     //connect to database
     const post = await prisma.post.deleteMany({
       where: {

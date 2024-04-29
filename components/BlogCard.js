@@ -1,5 +1,10 @@
 import Link from 'next/link';
 
+import money from '/public/money.jpeg';
+import Image from 'next/image';
+
+// TODO: limit overflow of title
+
 const BlogCard = ({
   image,
   date,
@@ -19,14 +24,18 @@ const BlogCard = ({
   let formattedDate = new Date(date);
   formattedDate = formattedDate.toLocaleDateString(locale, options);
 
-  const content = CardDescription;
-
   return (
     <>
       <Link href={`/blog/${slug}`} className="w-full px-4 md:w-1/2 lg:w-1/3">
         <div className="mb-10 w-full">
           <div className="mb-8 overflow-hidden rounded">
-            <img src={image} alt="" className="w-full" />
+            <Image
+              src={image || money}
+              width={400}
+              height={400}
+              style={{ width: '100%' }}
+              alt={CardTitle}
+            ></Image>
           </div>
           <div>
             {formattedDate && (
@@ -40,7 +49,7 @@ const BlogCard = ({
             </h3>
             <div
               className="text-base text-primary"
-              dangerouslySetInnerHTML={{ __html: content }}
+              dangerouslySetInnerHTML={{ __html: CardDescription }}
             />
           </div>
         </div>
