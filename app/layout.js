@@ -4,7 +4,8 @@ import Navbar from '@/components/Navbar';
 import AuthProvider from './providers/AuthProvider';
 import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const metadata = {
   title: 'Millennial Wealth',
   description: 'A blog for Millennials about investing and saving'
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
 
           <Footer></Footer>
         </AuthProvider>
+        <ToastContainer></ToastContainer>
       </body>
     </html>
   );
