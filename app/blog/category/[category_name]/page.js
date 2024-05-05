@@ -17,6 +17,7 @@ const CategoryPage = async ({ params }) => {
   const categoryName = params.category_name;
 
   const { posts } = await getData(categoryName);
+  console.log(posts);
 
   return (
     <div className="container mx-auto flex justify-between ">
@@ -25,20 +26,24 @@ const CategoryPage = async ({ params }) => {
           Posts about {params.category_name}
         </h2>
 
-        <div className="-mx-4 flex flex-wrap">
-          {posts.map((post) => {
-            return (
-              <BlogCard
-                key={post.id}
-                date={post.createdAt}
-                CardTitle={post.title}
-                CardDescription={post.desc.substring(0, 75)}
-                category={post.catSlug}
-                slug={post.slug}
-                image="https://i.ibb.co/Cnwd4q6/image-01.jpg"
-              />
-            );
-          })}
+        <div className="flex flex-wrap">
+          {posts.length > 0 ? (
+            posts.map((post) => {
+              return (
+                <BlogCard
+                  key={post.id}
+                  date={post.createdAt}
+                  CardTitle={post.title}
+                  CardDescription={post.desc.substring(0, 75)}
+                  category={post.catSlug}
+                  slug={post.slug}
+                  image={post.img}
+                />
+              );
+            })
+          ) : (
+            <p>No available posts about {params.category_name} yet.</p>
+          )}
         </div>
       </section>
 

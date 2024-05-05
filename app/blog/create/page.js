@@ -21,7 +21,7 @@ export default function CreatePostPage() {
   const [media, setMedia] = useState('');
 
   // TODO: Add validation for inputs
-  // TODO: Enable images in blog post
+
   // TODO: Enable auto save
   // TODO: Enable only render if published status
   // TODO: Check if title is unique so slug is unique
@@ -119,7 +119,7 @@ export default function CreatePostPage() {
 
   return (
     <div className="container mx-auto flex flex-col justify-center items-center">
-      <form clascsName="w-3/4" onSubmit={handleSubmit}>
+      <form className="w-3/4" onSubmit={handleSubmit}>
         {/* title */}
         <div className="mx-auto max-w-4xl">
           <div>

@@ -49,7 +49,7 @@ const AboutPage = () => {
             wealth and living life on our own terms.
           </p>
         </div>
-        <Image src={profile} className="h-1/4 w-1/4"></Image>
+        <Image src={profile} className="h-1/4 w-1/4" alt="Blog author"></Image>
       </div>
     </div>
   );

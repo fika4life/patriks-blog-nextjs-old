@@ -11,11 +11,14 @@ const getData = async () => {
   if (!res.ok) {
     throw new Error('Posts fetch failed');
   }
+
   return res.json();
 };
 
 const Blog = async () => {
   const { posts } = await getData();
+  console.log(posts);
+
   let latestPosts = posts.slice(0, 3);
   return (
     <>

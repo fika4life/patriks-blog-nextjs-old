@@ -6,7 +6,6 @@ import ListItem from './ListItem';
 import Link from 'next/link';
 import logo from '/public/logo2.svg';
 import { signOut, useSession } from 'next-auth/react';
-import { FaRegPlusSquare } from 'react-icons/fa';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -19,7 +18,7 @@ const Navbar = () => {
         <div className="relative md:-mx-4 flex items-center justify-between">
           <div className="w-60 max-w-full px-4">
             <Link href="/" className="block w-full py-5 text-primary">
-              <Image src={logo} alt="logo" width={240} height={60} />
+              <Image src={logo} alt="logo" width={240} height={60} priority />
             </Link>
           </div>
           <div className="flex w-full items-center justify-between px-4">
@@ -43,8 +42,6 @@ const Navbar = () => {
                 } `}
               >
                 <ul className="block lg:flex">
-                  <ListItem NavLink="/#">Home</ListItem>
-
                   <ListItem NavLink="/about">About</ListItem>
                   <ListItem NavLink="/blog">Blog</ListItem>
                   {session ? (
