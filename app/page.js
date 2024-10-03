@@ -1,25 +1,34 @@
-import BlogCard from '@/components/BlogCard';
 import Hero from '@/components/Hero';
 import Link from 'next/link';
 import { FaAngleRight } from 'react-icons/fa';
+import { client } from './lib/sanity';
+import BlogCard from '@/components/BlogCard';
 
 const getData = async () => {
-  const res = await fetch(`${process.env.URL}/api/posts/`, {
-    cache: 'no-store'
-  });
+  const query = `*[_type == 'blog']{
+  title,
+    smallDescription,
+    'slug': slug.current,
+    titleImage,
+    tags,
+    _id,
+    _createdAt,
+    tags[]-> {
+      _id,
+      slug,
+      name
+    }
 
-  if (!res.ok) {
-    throw new Error('Posts fetch failed');
-  }
-
-  return res.json();
+}`;
+  const data = await client.fetch(query);
+  return data;
 };
 
 const Blog = async () => {
-  const { posts } = await getData();
-  console.log(posts);
+  const posts = await getData();
 
-  let latestPosts = posts.slice(0, 3);
+  let latestPosts = await posts?.slice(0, 3);
+
   return (
     <>
       <Hero></Hero>
@@ -30,14 +39,14 @@ const Blog = async () => {
               Latest Posts
             </h2>
             <div className=" flex flex-wrap">
-              {latestPosts.map((post) => (
+              {latestPosts?.map((post) => (
                 <BlogCard
-                  key={post.id}
+                  key={post._id}
                   CardTitle={post.title}
-                  CardDescription={post.desc.slice(0, 60)}
-                  date={post.createdAt}
-                  image={post.img}
-                  category={post.catSlug}
+                  CardDescription={post.smallDescription}
+                  date={post._createdAt}
+                  image={post.titleImage.asset._ref}
+                  category={post.tags[0]?.name || 'Uncategorized'}
                   slug={post.slug}
                 ></BlogCard>
               ))}

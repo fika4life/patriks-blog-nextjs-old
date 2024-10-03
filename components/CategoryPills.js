@@ -1,19 +1,21 @@
+import { client } from '@/app/lib/sanity';
 import Tag from './Tag';
 
-const getData = async () => {
-  const response = await fetch(`${process.env.URL}/api/categories/`, {
-    cache: 'no-store'
-  });
-
-  if (!response.ok) {
-    throw new Error('categories fetch failed');
+const getAllTags = async () => {
+  const query = `
+  *[_type == "tag"] {
+    name,
+    slug,
+    _id,
+    "postCount": count(*[_type == "post" && references("tags", ^._id)])
   }
-
-  return response.json();
+  `;
+  const tags = client.fetch(query);
+  return tags;
 };
 
 export default async function CategoryPills() {
-  const { categories } = await getData();
+  const tags = await getAllTags();
 
   return (
     <aside className=" w-1/4 ml-4 px-6 ">
@@ -21,8 +23,8 @@ export default async function CategoryPills() {
         Categories
       </h3>
       <div className="flex justify-around flex-wrap gap-y-2">
-        {categories.map((category) => (
-          <Tag key={category.id} slug={category.slug}></Tag>
+        {tags.map((tag) => (
+          <Tag key={tag._id} slug={tag.name}></Tag>
         ))}
       </div>
     </aside>

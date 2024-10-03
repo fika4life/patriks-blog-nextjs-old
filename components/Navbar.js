@@ -10,8 +10,6 @@ import { signOut, useSession } from 'next-auth/react';
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const { data: session } = useSession();
-
   return (
     <header className={`flex w-full items-center bg-white  `}>
       <div className="container mx-auto">
@@ -44,19 +42,6 @@ const Navbar = () => {
                 <ul className="block lg:flex">
                   <ListItem NavLink="/about">About</ListItem>
                   <ListItem NavLink="/blog">Blog</ListItem>
-                  {session ? (
-                    <>
-                      <ListItem NavLink="/dashboard">Dashboard</ListItem>
-                      <span
-                        className="flex py-2 text-base font-medium text-primary hover:underline hover:underline-offset-8 hover:decoration-primary hover:decoration-2 lg:ml-12 lg:inline-flex hover:cursor-pointer"
-                        onClick={signOut}
-                      >
-                        Logout
-                      </span>
-                    </>
-                  ) : (
-                    <ListItem NavLink="/login">Login</ListItem>
-                  )}
                 </ul>
               </nav>
             </div>

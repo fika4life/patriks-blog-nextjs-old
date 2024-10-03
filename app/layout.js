@@ -1,7 +1,6 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
-import AuthProvider from './providers/AuthProvider';
 import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 import { ToastContainer } from 'react-toastify';
@@ -16,13 +15,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <body className="bg-secondary">
-        <AuthProvider>
-          <Navbar></Navbar>
+        <Navbar></Navbar>
 
-          <main className=" bg-secondary ">{children}</main>
+        <main className=" bg-secondary">{children}</main>
 
-          <Footer></Footer>
-        </AuthProvider>
+        <Footer></Footer>
+
         <ToastContainer></ToastContainer>
       </body>
     </html>

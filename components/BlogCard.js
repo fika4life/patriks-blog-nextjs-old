@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import money from '/public/money.jpeg';
 import Image from 'next/image';
+import { urlFor } from '@/app/lib/sanity';
 
 // TODO: limit overflow of title
 
@@ -30,7 +31,7 @@ const BlogCard = ({
         <div className="mb-10 w-full">
           <div className="mb-8 overflow-hidden rounded">
             <Image
-              src={image || money}
+              src={urlFor(image).url() || money}
               width={400}
               height={400}
               style={{ width: '100%' }}
@@ -44,13 +45,10 @@ const BlogCard = ({
                 <span className="capitalize"> {category}</span>
               </p>
             )}
-            <h3 className="mb-4 inline-block text-xl font-semibold text-primary hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">
+            <h3 className="mb-2 inline-block text-xl font-semibold text-primary hover:text-primary  sm:text-2xl lg:text-xl xl:text-2xl">
               {CardTitle}
             </h3>
-            <div
-              className="text-base text-primary"
-              dangerouslySetInnerHTML={{ __html: CardDescription }}
-            />
+            <div className="text-base text-primary">{CardDescription}</div>
           </div>
         </div>
       </Link>
